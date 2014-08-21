@@ -1,4 +1,4 @@
-TCKimlikKontrolu
+T.C. Kimlik Kontrolü Eklentisi
 ================
 
 www.nvi.gov.tr üyeliğinizle kolay bir şekilde T.C. Kimlik konrolü ve T.C. kimlik bilgilerini size dönen bir bileşendir.
