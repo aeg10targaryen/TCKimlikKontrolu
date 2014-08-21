@@ -6,13 +6,14 @@ www.nvi.gov.tr üyeliğinizle kolay bir şekilde T.C. Kimlik konrolü ve T.C. ki
 
 Aşağıdaki Namespace leri projenize ekleyiniz
 
-System.IdentityModel
-System.Runtime.Serialization
-System.ServiceModel
-Microsoft.IdentityModel
+System.IdentityModel<br>
+System.Runtime.Serialization<br>
+System.ServiceModel<br>
+Microsoft.IdentityModel<br>
 
 Daha sonra Web.config dosyanıza aşağıdaki bilgileri ekleyiniz.
 
+```xml
 <system.serviceModel>
     <bindings>
       <customBinding>
@@ -157,25 +158,25 @@ Daha sonra Web.config dosyanıza aşağıdaki bilgileri ekleyiniz.
       <endpoint address="https://kpsv2.nvi.gov.tr/Services/RoutingService.svc" binding="customBinding" bindingConfiguration="CustomBinding_KisiSorgulaTCKimlikNoServis1" contract="KPSKimlik.KisiSorgulaTCKimlikNoServis" name="CustomBinding_KisiSorgulaTCKimlikNoServis"/>
     </client>
 </system.serviceModel>
-  
+```
 Son olarak Web.config dosyanızadaki AppSettings alanında bulunan KpsUserName ve KpsPassword alanını kendi 
 kullanıcı bilgilerinizi yazarak eklentiyi kolayca kullanabilirsiniz.
 
 
 T.C. Kimlik numarasını belirttiğiniz kişinin bilgileri aşağıdaki gibi gelecektir.
 
-Ad
-Soyad
-Cinsiyet
-DogumYeri
-DogumTarihi
-OlumTarihi
-MedeniDurumu
-NufusIl
-NufusIlce
-MahalleKoy
-AileSiraNo
-BireySiraNo
-Cilt
-AnneAdi
+Ad<br>
+Soyad<br>
+Cinsiyet<br>
+DogumYeri<br>
+DogumTarihi<br>
+OlumTarihi<br>
+MedeniDurumu<br>
+NufusIl<br>
+NufusIlce<br>
+MahalleKoy<br>
+AileSiraNo<br>
+BireySiraNo<br>
+Cilt<br>
+AnneAdi<br>
 BabaAdi
