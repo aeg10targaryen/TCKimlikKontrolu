@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://kps.nvi.gov.tr" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TcKimlikNoSorgulaAdresServis" targetNamespace="http://kps.nvi.gov.tr" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="CustomBinding_TcKimlikNoSorgulaAdresServis_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:EndorsingSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:IssuedToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <Issuer xmlns="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                <Address xmlns="http://www.w3.org/2005/08/addressing">https://sts.kaleyazilim.com.tr/dev.sts/Services/Issuer.svc/IWSTrust13</Address>
+                <Metadata xmlns="http://www.w3.org/2005/08/addressing">
+                  <Metadata xmlns="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <wsx:MetadataSection xmlns="">
+                      <wsx:MetadataReference>
+                        <Address xmlns="http://www.w3.org/2005/08/addressing">https://sts.kaleyazilim.com.tr/dev.sts/Services/Issuer.svc/mex</Address>
+                      </wsx:MetadataReference>
+                    </wsx:MetadataSection>
+                  </Metadata>
+                </Metadata>
+              </Issuer>
+              <sp:RequestSecurityTokenTemplate>
+                <t:KeyType xmlns:t="http://schemas.xmlsoap.org/ws/2005/02/trust">http://schemas.xmlsoap.org/ws/2005/02/trust/SymmetricKey</t:KeyType>
+              </sp:RequestSecurityTokenTemplate>
+              <wsp:Policy>
+                <sp:RequireInternalReference />
+              </wsp:Policy>
+            </sp:IssuedToken>
+          </wsp:Policy>
+        </sp:EndorsingSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://kps.nvi.gov.tr">
+      <xsd:element name="Sorgula">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/Kps.Tipler" minOccurs="0" name="criteria" nillable="true" type="q1:ArrayOfTCKimlikNoileAdresSorguKriteri" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SorgulaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element xmlns:q2="http://schemas.datacontract.org/2004/07/Kps.Tipler" minOccurs="0" name="SorgulaResult" nillable="true" type="q2:KisiAdresBilgileriSonucu" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xsd:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Kps.Tipler" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Kps.Tipler">
+      <xsd:complexType name="ArrayOfTCKimlikNoileAdresSorguKriteri">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="TCKimlikNoileAdresSorguKriteri" nillable="true" type="tns:TCKimlikNoileAdresSorguKriteri" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfTCKimlikNoileAdresSorguKriteri" nillable="true" type="tns:ArrayOfTCKimlikNoileAdresSorguKriteri" />
+      <xsd:complexType name="TCKimlikNoileAdresSorguKriteri">
+        <xsd:sequence>
+          <xsd:element name="TCKimlikNo" nillable="true" type="xsd:long" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="TCKimlikNoileAdresSorguKriteri" nillable="true" type="tns:TCKimlikNoileAdresSorguKriteri" />
+      <xsd:complexType name="KisiAdresBilgileriSonucu">
+        <xsd:sequence>
+          <xsd:element xmlns:q3="Kps.Tipler" name="HataBilgisi" nillable="true" type="q3:Parametre" />
+          <xsd:element name="SorguSonucu" nillable="true" type="tns:ArrayOfKisiAdresBilgileri" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="KisiAdresBilgileriSonucu" nillable="true" type="tns:KisiAdresBilgileriSonucu" />
+      <xsd:complexType name="ArrayOfKisiAdresBilgileri">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="KisiAdresBilgileri" nillable="true" type="tns:KisiAdresBilgileri" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfKisiAdresBilgileri" nillable="true" type="tns:ArrayOfKisiAdresBilgileri" />
+      <xsd:complexType name="KisiAdresBilgileri">
+        <xsd:sequence>
+          <xsd:element name="DigerAdresBilgileri" nillable="true" type="tns:ArrayOfKisiAdresBilgisi" />
+          <xsd:element xmlns:q4="Kps.Tipler" name="HataBilgisi" nillable="true" type="q4:Parametre" />
+          <xsd:element name="TCKimlikNo" nillable="true" type="xsd:long" />
+          <xsd:element name="YerlesimYeriAdresi" nillable="true" type="tns:KisiAdresBilgisi" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="KisiAdresBilgileri" nillable="true" type="tns:KisiAdresBilgileri" />
+      <xsd:complexType name="ArrayOfKisiAdresBilgisi">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="KisiAdresBilgisi" nillable="true" type="tns:KisiAdresBilgisi" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfKisiAdresBilgisi" nillable="true" type="tns:ArrayOfKisiAdresBilgisi" />
+      <xsd:complexType name="KisiAdresBilgisi">
+        <xsd:sequence>
+          <xsd:element name="AcikAdres" nillable="true" type="xsd:string" />
+          <xsd:element name="AdresNo" nillable="true" type="xsd:long" />
+          <xsd:element xmlns:q5="Kps.Tipler" name="AdresTip" nillable="true" type="q5:Parametre" />
+          <xsd:element name="BeldeAdresi" nillable="true" type="tns:BeldeAdresi" />
+          <xsd:element xmlns:q6="Kps.Tipler" name="BeyanTarihi" nillable="true" type="q6:TarihBilgisi" />
+          <xsd:element xmlns:q7="Kps.Tipler" name="HataBilgisi" nillable="true" type="q7:Parametre" />
+          <xsd:element name="IlIlceMerkezAdresi" nillable="true" type="tns:IlIlceMerkezi" />
+          <xsd:element name="KoyAdresi" nillable="true" type="tns:KoyAdresi" />
+          <xsd:element xmlns:q8="Kps.Tipler" name="TasinmaTarihi" nillable="true" type="q8:TarihBilgisi" />
+          <xsd:element xmlns:q9="Kps.Tipler" name="TescilTarihi" nillable="true" type="q9:TarihBilgisi" />
+          <xsd:element name="YurtDisiAdresi" nillable="true" type="tns:YurtDisiAdresi" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="KisiAdresBilgisi" nillable="true" type="tns:KisiAdresBilgisi" />
+      <xsd:complexType name="BeldeAdresi">
+        <xsd:sequence>
+          <xsd:element name="Bucak" nillable="true" type="xsd:string" />
+          <xsd:element name="BucakKod" nillable="true" type="xsd:int" />
+          <xsd:element name="Csbm" nillable="true" type="xsd:string" />
+          <xsd:element name="CsbmKodu" nillable="true" type="xsd:int" />
+          <xsd:element name="DisKapiNo" nillable="true" type="xsd:int" />
+          <xsd:element xmlns:q10="Kps.Tipler" name="HataBilgisi" nillable="true" type="q10:Parametre" />
+          <xsd:element name="IcKapiNo" nillable="true" type="xsd:string" />
+          <xsd:element name="Il" nillable="true" type="xsd:string" />
+          <xsd:element name="IlKodu" nillable="true" type="xsd:int" />
+          <xsd:element name="Ilce" nillable="true" type="xsd:string" />
+          <xsd:element name="IlceKodu" nillable="true" type="xsd:int" />
+          <xsd:element name="Koy" nillable="true" type="xsd:string" />
+          <xsd:element name="KoyKayitNo" nillable="true" type="xsd:long" />
+          <xsd:element name="KoyKod" nillable="true" type="xsd:long" />
+          <xsd:element name="Mahalle" nillable="true" type="xsd:string" />
+          <xsd:element name="MahalleKod" nillable="true" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="BeldeAdresi" nillable="true" type="tns:BeldeAdresi" />
+      <xsd:complexType name="IlIlceMerkezi">
+        <xsd:sequence>
+          <xsd:element name="Csbm" nillable="true" type="xsd:string" />
+          <xsd:element name="CsbmKodu" nillable="true" type="xsd:int" />
+          <xsd:element name="DisKapiNo" nillable="true" type="xsd:int" />
+          <xsd:element xmlns:q11="Kps.Tipler" name="HataBilgisi" nillable="true" type="q11:Parametre" />
+          <xsd:element name="IcKapiNo" nillable="true" type="xsd:string" />
+          <xsd:element name="Il" nillable="true" type="xsd:string" />
+          <xsd:element name="IlKodu" nillable="true" type="xsd:int" />
+          <xsd:element name="Ilce" nillable="true" type="xsd:string" />
+          <xsd:element name="IlceKodu" nillable="true" type="xsd:int" />
+          <xsd:element name="Mahalle" nillable="true" type="xsd:string" />
+          <xsd:element name="MahalleKod" nillable="true" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="IlIlceMerkezi" nillable="true" type="tns:IlIlceMerkezi" />
+      <xsd:complexType name="KoyAdresi">
+        <xsd:sequence>
+          <xsd:element name="Bucak" nillable="true" type="xsd:string" />
+          <xsd:element name="BucakKod" nillable="true" type="xsd:int" />
+          <xsd:element name="Csbm" nillable="true" type="xsd:string" />
+          <xsd:element name="CsbmKodu" nillable="true" type="xsd:int" />
+          <xsd:element name="DisKapiNo" nillable="true" type="xsd:int" />
+          <xsd:element xmlns:q12="Kps.Tipler" name="HataBilgisi" nillable="true" type="q12:Parametre" />
+          <xsd:element name="IcKapiNo" nillable="true" type="xsd:string" />
+          <xsd:element name="Il" nillable="true" type="xsd:string" />
+          <xsd:element name="IlKodu" nillable="true" type="xsd:int" />
+          <xsd:element name="Ilce" nillable="true" type="xsd:string" />
+          <xsd:element name="IlceKodu" nillable="true" type="xsd:int" />
+          <xsd:element name="Koy" nillable="true" type="xsd:string" />
+          <xsd:element name="KoyKayitNo" nillable="true" type="xsd:long" />
+          <xsd:element name="KoyKod" nillable="true" type="xsd:long" />
+          <xsd:element name="Mahalle" nillable="true" type="xsd:string" />
+          <xsd:element name="MahalleKod" nillable="true" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="KoyAdresi" nillable="true" type="tns:KoyAdresi" />
+      <xsd:complexType name="YurtDisiAdresi">
+        <xsd:sequence>
+          <xsd:element xmlns:q13="Kps.Tipler" name="HataBilgisi" nillable="true" type="q13:Parametre" />
+          <xsd:element name="YabanciAdres" nillable="true" type="xsd:string" />
+          <xsd:element name="YabanciSehir" nillable="true" type="xsd:string" />
+          <xsd:element xmlns:q14="Kps.Tipler" name="YabanciUlke" nillable="true" type="q14:Parametre" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="YurtDisiAdresi" nillable="true" type="tns:YurtDisiAdresi" />
+    </xsd:schema>
+    <xsd:schema xmlns:tns="Kps.Tipler" elementFormDefault="qualified" targetNamespace="Kps.Tipler">
+      <xsd:complexType name="Parametre">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Aciklama" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Kod" nillable="true" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Parametre" nillable="true" type="tns:Parametre" />
+      <xsd:complexType name="TarihBilgisi">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Ay" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="Gun" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="Yil" nillable="true" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="TarihBilgisi" nillable="true" type="tns:TarihBilgisi" />
+    </xsd:schema>
+    <xsd:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Framework.Communications.Wcf.FaultTypes" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Framework.Communications.Wcf.FaultTypes">
+      <xsd:complexType name="FaultContracts.TechnicalFaultContract">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:FaultContracts.BaseFaultContract">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="FaultContracts.TechnicalFaultContract" nillable="true" type="tns:FaultContracts.TechnicalFaultContract" />
+      <xsd:complexType name="FaultContracts.BaseFaultContract">
+        <xsd:sequence />
+      </xsd:complexType>
+      <xsd:element name="FaultContracts.BaseFaultContract" nillable="true" type="tns:FaultContracts.BaseFaultContract" />
+      <xsd:complexType name="FaultContracts.ValidationFaultContract">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:FaultContracts.BaseFaultContract">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="FaultContracts.ValidationFaultContract" nillable="true" type="tns:FaultContracts.ValidationFaultContract" />
+      <xsd:complexType name="FaultContracts.BusinessFaultContract">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:FaultContracts.BaseFaultContract">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="FaultContracts.BusinessFaultContract" nillable="true" type="tns:FaultContracts.BusinessFaultContract" />
+      <xsd:complexType name="FaultContracts.SecurityFaultContract">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:FaultContracts.BaseFaultContract">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="FaultContracts.SecurityFaultContract" nillable="true" type="tns:FaultContracts.SecurityFaultContract" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="TcKimlikNoSorgulaAdresServis_Sorgula_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sorgula" />
+  </wsdl:message>
+  <wsdl:message name="TcKimlikNoSorgulaAdresServis_Sorgula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SorgulaResponse" />
+  </wsdl:message>
+  <wsdl:message name="TcKimlikNoSorgulaAdresServis_Sorgula_TechnicalFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/Framework.Communications.Wcf.FaultTypes" name="detail" element="q15:FaultContracts.TechnicalFaultContract" />
+  </wsdl:message>
+  <wsdl:portType name="TcKimlikNoSorgulaAdresServis">
+    <wsdl:operation name="Sorgula">
+      <wsdl:input wsaw:Action="http://kps.nvi.gov.tr/TcKimlikNoSorgulaAdresServis/Sorgula" message="tns:TcKimlikNoSorgulaAdresServis_Sorgula_InputMessage" />
+      <wsdl:output wsaw:Action="http://kps.nvi.gov.tr/TcKimlikNoSorgulaAdresServis/SorgulaResponse" message="tns:TcKimlikNoSorgulaAdresServis_Sorgula_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://framework/faults" name="TechnicalFaultContractFault" message="tns:TcKimlikNoSorgulaAdresServis_Sorgula_TechnicalFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomBinding_TcKimlikNoSorgulaAdresServis" type="tns:TcKimlikNoSorgulaAdresServis">
+    <wsp:PolicyReference URI="#CustomBinding_TcKimlikNoSorgulaAdresServis_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Sorgula">
+      <soap12:operation soapAction="http://kps.nvi.gov.tr/TcKimlikNoSorgulaAdresServis/Sorgula" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="TechnicalFaultContractFault">
+        <soap12:fault use="literal" name="TechnicalFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TcKimlikNoSorgulaAdresServis">
+    <wsdl:port name="CustomBinding_TcKimlikNoSorgulaAdresServis" binding="tns:CustomBinding_TcKimlikNoSorgulaAdresServis">
+      <soap12:address location="http://kps2.kaleyazilim.internal/dev.client/services/routingservice.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://kps2.kaleyazilim.internal/dev.client/services/routingservice.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

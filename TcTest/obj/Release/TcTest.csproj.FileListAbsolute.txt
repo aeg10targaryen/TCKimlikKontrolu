@@ -1,0 +1,8 @@
+C:\serimSVN\Common\NviTcIdentityChecker\TcIdentityChecker\TcTest\bin\Release\TcTest.exe.config
+C:\serimSVN\Common\NviTcIdentityChecker\TcIdentityChecker\TcTest\bin\Release\TcTest.exe
+C:\serimSVN\Common\NviTcIdentityChecker\TcIdentityChecker\TcTest\bin\Release\TcTest.pdb
+C:\serimSVN\Common\NviTcIdentityChecker\TcIdentityChecker\TcTest\bin\Release\TcIdentityChecker.dll
+C:\serimSVN\Common\NviTcIdentityChecker\TcIdentityChecker\TcTest\bin\Release\TcIdentityChecker.pdb
+C:\serimSVN\Common\NviTcIdentityChecker\TcIdentityChecker\TcTest\obj\Release\TcTest.csprojResolveAssemblyReference.cache
+C:\serimSVN\Common\NviTcIdentityChecker\TcIdentityChecker\TcTest\obj\Release\TcTest.exe
+C:\serimSVN\Common\NviTcIdentityChecker\TcIdentityChecker\TcTest\obj\Release\TcTest.pdb

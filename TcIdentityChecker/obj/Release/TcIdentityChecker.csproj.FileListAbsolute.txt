@@ -1,0 +1,5 @@
+C:\serimSVN\Common\NviTcIdentityChecker\TcIdentityChecker\TcIdentityChecker\obj\Release\TcIdentityChecker.pdb
+C:\serimSVN\Common\NviTcIdentityChecker\TcIdentityChecker\TcIdentityChecker\bin\Release\TcIdentityChecker.dll
+C:\serimSVN\Common\NviTcIdentityChecker\TcIdentityChecker\TcIdentityChecker\bin\Release\TcIdentityChecker.pdb
+C:\serimSVN\Common\NviTcIdentityChecker\TcIdentityChecker\TcIdentityChecker\bin\Release\Microsoft.IdentityModel.dll
+C:\serimSVN\Common\NviTcIdentityChecker\TcIdentityChecker\TcIdentityChecker\obj\Release\TcIdentityChecker.dll
